@@ -1,3 +1,4 @@
+  
 public class Blob extends Entity {
   //fields
   private float ax, ay, vx, vy, speed, hp;

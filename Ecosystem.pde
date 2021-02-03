@@ -9,13 +9,13 @@ public void setup() {
 }
 
 public void draw() {
-  background(200);
+  background(0);
 
   for (Blob blob : blobs) {
     if (!blob.isActive()) continue;
     
     for (Food food : foods) {
-     blob.blobVsFood(food); 
+      blob.blobVsFood(food);
     }
     
     blob.move();
@@ -44,33 +44,31 @@ private void takeOutTheTrash() {
   foods.remove(trashFood);
 }
 
- 
+//1. Spawn Reds and Blues, not Blobs
 public void mouseReleased() {
   if (mode.equals("blue")) {
     //polymorphism
     Blob newBlob = new Blue(mouseX, mouseY);
     blobs.add(newBlob);
-    blues.add((Blue)newBlob);
+    blues.add( (Blue) newBlob);
   }
   else if (mode.equals("red")) {
-   Blob newBlob = new Red (mouseX, mouseY);
-   blobs.add(newBlob);
-   reds.add((Red) newBlob);
-  
+    Blob newBlob = new Red(mouseX, mouseY);
+    blobs.add(newBlob);
+    reds.add( (Red) newBlob);
   }
-  
   else if (mode.equals("food")) {
     Food newFood = new Food(mouseX, mouseY);
     foods.add(newFood);
   }
 }
-//2. Make Fight happen
+
 public void keyPressed() {
   if (keyCode == 70) {
     mode = "food";
   } else if (keyCode == 82) {
     mode = "red";
   } else if (keyCode == 66) {
-    mode = "blue";
+    mode = "blue"; 
   }
 }
